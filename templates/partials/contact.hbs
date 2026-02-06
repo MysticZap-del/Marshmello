@@ -1,0 +1,84 @@
+<div class="container-fluid mt-5 contact-style" id="contactid">
+  <div class="row">
+    <div class="col-md-10 col-12 mx-auto">
+
+      <h1 class="text-center main-heading">Contact Us</h1>
+      <p class="text-center sub-heading">
+        We will be happy to help you 🙂
+      </p>
+
+      <div class="row">
+        <div class="col-md-6 col-12 mx-auto">
+
+          <form action="/contact" method="POST">
+
+            <!-- Name -->
+            <div class="form-group mb-3">
+              <label for="name">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Enter your full name"
+                name="name"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="form-group mb-3">
+              <label for="email">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email"
+                name="email"
+                required
+              />
+              <small class="form-text text-muted">
+                We'll never share your email with anyone else.
+              </small>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group mb-3">
+              <label for="phone">Phone</label>
+              <input
+                type="number"
+                class="form-control"
+                id="phone"
+                placeholder="Enter your phone number"
+                name="phone"
+                required
+              />
+            </div>
+
+            <!-- Message -->
+            <div class="form-group mb-4">
+              <label for="message">Message</label>
+              <textarea
+                class="form-control"
+                id="message"
+                rows="4"
+                placeholder="Write your message here..."
+                name="message"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary px-5">
+                Send Message
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

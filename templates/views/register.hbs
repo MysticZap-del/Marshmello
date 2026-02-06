@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Marshmello</title>
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  {{> navbar}}
+
+  <div class="container-fluid mt-5 contact-style">
+    <div class="row">
+      <div class="col-md-6 col-12 mx-auto">
+
+        <h1 class="text-center main-heading">Create Account</h1>
+        <p class="text-center sub-heading">
+          Join Marshmello today 🚀
+        </p>
+
+        <form action="/register" method="POST">
+
+          <!-- Full Name -->
+          <div class="form-group mb-3">
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group mb-3">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group mb-4">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+
+          <!-- Button -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary px-5">
+              Register
+            </button>
+          </div>
+
+          <!-- Link -->
+          <p class="text-center mt-4">
+            Already have an account?
+            <a href="/login">Login</a>
+          </p>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="/jq/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
