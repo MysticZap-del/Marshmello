@@ -32,5 +32,6 @@ registerSchema.pre("save", async function (next) {
   this.confirmPassword = undefined;
 });
 
+// this will create an index on the email field to improve the performance of finding the user by email
 const Register = mongoose.model("Register", registerSchema);
 module.exports = Register;

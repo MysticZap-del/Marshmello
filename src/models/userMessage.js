@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
 })
 
 
+userSchema.index({name: 1});
 
 // We need a collection to store the data
 const UserMessage = mongoose.model('UserMessage', userSchema);

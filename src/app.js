@@ -16,6 +16,13 @@ const bcrypt = require("bcryptjs");
 const JWT_SECRET_KEY = process.env.JWT_SECRET;
 const auth = require("./middlewares/auth");
 const Register = require("./models/register");
+const limitter = require("express-rate-limit");
+
+const loginLimiter = limitter({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 login requests per windowMs
+  message: "Too many login attempts, please try again later.",
+})
 
 
 // Middleware
@@ -65,10 +72,11 @@ app.post("/contact", auth, async (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
+app.post("/login", loginLimiter, async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await Register.findOne({ email });
+    const user = await Register.findOne({ email }); // this is looking the entire database for the email and if it is found then it will return the user data otherwise it will return null
+    // now i m going to add indexing to reduce the time complexity of finding the user by email from O(n) to O(log n)
     if (!user) {
       return res.send("Invalid Login Credentials");
     }
@@ -114,6 +122,21 @@ app.get("/logout", (req, res) => {
   res.redirect("/index");
 });
 
+app.get("/messages", auth, async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 5;
+
+    const messages = await UserMessage.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    res.json(messages);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+// console.log(await Register.collection.indexes());
 app.listen(PORT, () => {
   console.log(`Server is listening on: http://localhost:${PORT}/`);
 });
